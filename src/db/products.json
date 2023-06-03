@@ -3,30 +3,35 @@
     "id": 1,
     "title": "iPhone 12",
     "unit_price": 999,
+    "currency_id": "ARS",
     "category": "Electronics"
   },
   {
     "id": 2,
     "title": "Nike Air Max 90",
     "unit_price": 120,
+    "currency_id": "ARS",
     "category": "Footwear"
   },
   {
     "id": 3,
     "title": "Canon EOS Rebel T7i",
     "unit_price": 699,
+    "currency_id": "ARS",
     "category": "Electronics"
   },
   {
     "id": 4,
     "title": "Levi's 501 Jeans",
     "unit_price": 59,
+    "currency_id": "ARS",
     "category": "Apparel"
   },
   {
     "id": 5,
     "title": "Fitbit Versa 3",
     "unit_price": 199,
+    "currency_id": "ARS",
     "category": "Electronics"
   }
 ]
