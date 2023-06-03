@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import productsJson from '../db/products.json' assert { type: "json" };
+import { HOST_URL } from '../constants.js';
 
 export const getProduct = (req: Request, res: Response) => {
 	const productId = parseInt(req.params.id);
@@ -9,6 +10,7 @@ export const getProduct = (req: Request, res: Response) => {
 	if (!productFound) {
 		res.sendStatus(404);
 	} else {
-		res.status(200).json(productFound);
+		const product = { ...productFound, buyLink: `${HOST_URL}/${productId}/buy` };
+		res.json(product);
 	}
 }
