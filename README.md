@@ -1,4 +1,5 @@
 # First MP Test Integration
+It is a test API for integration, easily adaptable to a real production environment.
 
 ## Prerequisites
 Before you can use this project, please make sure you have the following prerequisites:
@@ -11,7 +12,7 @@ Before you can use this project, please make sure you have the following prerequ
     - Go to "Test credentials". Copy the Access Token and save it for later use.
 
 2. **ngrok**: In order to expose your local development server to the internet, you will need to download the ngrok binary. It is essential to use ngrok because the responses from MercadoPago are secured with SSL certificates for the HTTPS protocol.
-    - Create an account on [ngrok](ngrok.com) and signing up.
+    - Create an account on [ngrok](https://www.ngrok.com) and signing up.
     - Download the ngrok binary suitable for your operating system.
     - Save the ngrok binary in a safe location for future use."
 
@@ -54,3 +55,63 @@ npm run build
 ```bash
 npm start
 ```
+
+
+## Usage
+
+1. In another browser profile, log in to MercadoPago, but this time using the buyer account.
+(You can use a JSON viewer extension like 'JSON Viewer' directly from your browser, or tools like Postman or Insomnia)
+
+2. The main route displays 5 articles with their titles and corresponding links.
+```
+{
+  "products": [
+    {
+      "title": "iPhone 12",
+      "link": "http://localhost:<PORT>/1"
+    },
+    {
+      "title": "Nike Air Max 90",
+      "link": "http://localhost:<PORT>/2"
+    },
+    {
+      "title": "Canon EOS Rebel T7i",
+      "link": "http://localhost:<PORT>/3"
+    },
+    {
+      "title": "Levi's 501 Jeans",
+      "link": "http://localhost:<PORT>/4"
+    },
+    {
+      "title": "Fitbit Versa 3",
+      "link": "http://localhost:<PORT>/5"
+    }
+  ]
+}
+```
+
+3. Clicking on the link or requesting the information will respond with detailed information about the article, including a route for purchasing.
+```
+{
+  "id": 2,
+  "title": "Nike Air Max 90",
+  "unit_price": 120,
+  "currency_id": "ARS",
+  "category": "Footwear",
+  "buy": "http://localhost:<PORT>/2/buy"
+}
+```
+
+4. Clicking or making a request to the purchase route will respond with another link to initiate the payment process.
+```
+{
+  "message": "Creating order",
+  "paymentLink": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=<PREF_ID>"
+}
+```
+
+5. Clicking or opening this link in another window will allow you to effectively purchase the corresponding product, using either the funds in your MercadoPago account or the test cards provided by MercadoPago.
+
+6. From there, you can return to the app by clicking the "Back to the Site" button.
+
+And that's it! You can create more buyer accounts for testing purposes or adapt it to use a real MercadoPago account of your own.
