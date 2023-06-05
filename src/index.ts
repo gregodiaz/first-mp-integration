@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(routerIndex);
-app.use(routerProducts);
 app.use(routerPayment);
+app.use(routerProducts);
 
 app.listen(PORT, () => {
 	console.log(`Server on port ${PORT}`);

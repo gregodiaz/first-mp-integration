@@ -6,3 +6,6 @@ dist
 
 http
 *.http
+
+ngrok
+ngrok.*

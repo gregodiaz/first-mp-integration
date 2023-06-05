@@ -10,7 +10,7 @@ export const getProduct = (req: Request, res: Response) => {
 	if (!productFound) {
 		res.sendStatus(404);
 	} else {
-		const product = { ...productFound, buyLink: `${HOST_URL}/${productId}/buy` };
+		const product = { ...productFound, buy: `${HOST_URL}/${productId}/buy` };
 		res.json(product);
 	}
 }
